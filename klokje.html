@@ -11,8 +11,8 @@ const
   c = document.getElementById("myCanvas"),
   ctx = c.getContext("2d"),
   width = 666.0, height = 666.0,
-  mx = width / 2,
-  my = height / 2,
+  mx = width / 2 - 2,
+  my = height / 2 - 2,
   r = mx * 0.5;
 
 const
@@ -45,7 +45,7 @@ ctx.arc(mx, my + 178, 15, 0, 2 * Math.PI, false);
 ctx.fillStyle = 'black';
 ctx.fill();
 ctx.lineWidth = 5;
-ctx.strokeStyle = 'white';
+ctx.strokeStyle = '#bbbbbb';
 ctx.stroke();
 
 // Draw seconds hand
@@ -68,6 +68,15 @@ yy = my - r / 1.2 * Math.sin(smallHand);
 ctx.lineTo(xx, yy);
 ctx.stroke();
 
+// Draw middle circle
+ctx.beginPath();
+ctx.arc(mx, my, 15, 0, 2 * Math.PI, false);
+ctx.fillStyle = 'black';
+ctx.fill();
+ctx.lineWidth = 5;
+ctx.strokeStyle = '#bbbbbb';
+ctx.stroke();
+
 // Draw big hand
 ctx.beginPath();
 ctx.lineWidth = 10;
@@ -76,15 +85,6 @@ ctx.moveTo(mx, my);
 xx = mx - r * 1.03 * Math.cos(bigHand);
 yy = my - r * 1.03 * Math.sin(bigHand);
 ctx.lineTo(xx, yy);
-ctx.stroke();
-
-// Draw middle circle
-ctx.beginPath();
-ctx.arc(mx, my, 15, 0, 2 * Math.PI, false);
-ctx.fillStyle = 'black';
-ctx.fill();
-ctx.lineWidth = 5;
-ctx.strokeStyle = 'white';
 ctx.stroke();
 
 }
