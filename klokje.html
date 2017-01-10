@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<canvas id="myCanvas" width="666" height="666" style="border:0px solid #666;">
+Your browser does not support the HTML5 canvas tag.</canvas>
+
+<script>
+
+const
+  c = document.getElementById("myCanvas"),
+  ctx = c.getContext("2d"),
+  width = 666.0, height = 666.0,
+  mx = width / 2,
+  my = height / 2,
+  r = mx * 0.5;
+
+const
+  background = new Image();
+
+background.src = "klokje666.png";
+
+background.onload = function() {
+  ctx.drawImage(background, 0, 0);   
+}
+
+const
+  draw = function() {
+
+var
+  xx, yy, smallHand, bigHand, secondsHand, t;
+
+t = new Date();
+
+smallHand = ( (360 / 12 * t.getHours() + (360 / 60 * t.getMinutes() / 12) ) + 90 ) / 180 * Math.PI;
+bigHand = ( (360 / 60 * t.getMinutes() + (360 / 60 * t.getSeconds() / 60) ) + 90 ) / 180 * Math.PI;
+secondsHand = (360 / 60 * t.getSeconds() + 90) / 180 * Math.PI;
+
+// Draw background
+ctx.drawImage(background, 0, 0);
+
+// Draw seconds circle
+ctx.beginPath();
+ctx.arc(mx, my + 178, 15, 0, 2 * Math.PI, false);
+ctx.fillStyle = 'black';
+ctx.fill();
+ctx.lineWidth = 5;
+ctx.strokeStyle = 'white';
+ctx.stroke();
+
+// Draw seconds hand
+ctx.beginPath();
+ctx.lineWidth = 2;
+ctx.strokeStyle = 'black';
+ctx.moveTo(mx, my + 178);
+xx = mx - 90 * Math.cos(secondsHand);
+yy = my - 90 * Math.sin(secondsHand);
+ctx.lineTo(xx, yy + 178);
+ctx.stroke();
+
+// Draw small hand
+ctx.beginPath();
+ctx.lineWidth = 10;
+ctx.strokeStyle = 'black';
+ctx.moveTo(mx, my);
+xx = mx - r / 1.2 * Math.cos(smallHand);
+yy = my - r / 1.2 * Math.sin(smallHand);
+ctx.lineTo(xx, yy);
+ctx.stroke();
+
+// Draw big hand
+ctx.beginPath();
+ctx.lineWidth = 10;
+ctx.strokeStyle = 'black';
+ctx.moveTo(mx, my);
+xx = mx - r * 1.03 * Math.cos(bigHand);
+yy = my - r * 1.03 * Math.sin(bigHand);
+ctx.lineTo(xx, yy);
+ctx.stroke();
+
+// Draw middle circle
+ctx.beginPath();
+ctx.arc(mx, my, 15, 0, 2 * Math.PI, false);
+ctx.fillStyle = 'black';
+ctx.fill();
+ctx.lineWidth = 5;
+ctx.strokeStyle = 'white';
+ctx.stroke();
+
+}
+
+setInterval(draw, 1000);
+
+document.write(t.getHours() + ' : ' + t.getMinutes());
+</script>
+
+</body>
+</html>
