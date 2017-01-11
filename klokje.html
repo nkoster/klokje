@@ -56,7 +56,7 @@ const
   // Seconds y offset
   syo = 174;
 
-// The "/ 180 * Math.PI" at the end converts angle degree into radials
+// The "/ 180 * Math.PI" at the end converts angle degrees to radians
 smallHand = ((ha * t.getHours() + (ma * t.getMinutes() / 12) + (ma * t.getSeconds() / 60 / 12)) + 90) / 180 * Math.PI;
 bigHand = ((ma * t.getMinutes() + (ma * t.getSeconds() / 60)) + 90) / 180 * Math.PI;
 secondsHand = (ma * t.getSeconds() + 90) / 180 * Math.PI;
