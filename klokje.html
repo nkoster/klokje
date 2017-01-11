@@ -28,13 +28,18 @@ const
   draw = function() {
 
 var
-  xx, yy, smallHand, bigHand, secondsHand, t;
+  xx, yy, smallHand, bigHand, secondsHand;
 
-t = new Date();
+const
+  t = new Date(),
+  // Hour angle
+  ha = 360 / 12,
+  // Minute angle
+  ma = 360 / 60;
 
-smallHand = ( (360 / 12 * t.getHours() + (360 / 60 * t.getMinutes() / 12) ) + 90 ) / 180 * Math.PI;
-bigHand = ( (360 / 60 * t.getMinutes() + (360 / 60 * t.getSeconds() / 60) ) + 90 ) / 180 * Math.PI;
-secondsHand = (360 / 60 * t.getSeconds() + 90) / 180 * Math.PI;
+smallHand = ((ha * t.getHours() + (ma * t.getMinutes() / 12)) + 90) / 180 * Math.PI;
+bigHand = ((ma * t.getMinutes() + (ma * t.getSeconds() / 60)) + 90) / 180 * Math.PI;
+secondsHand = (ma * t.getSeconds() + 90) / 180 * Math.PI;
 
 // Draw background
 ctx.drawImage(background, 0, 0);
