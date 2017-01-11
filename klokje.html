@@ -23,8 +23,8 @@ const
   c = document.getElementById("myCanvas"),
   ctx = c.getContext("2d"),
   width = 666.0, height = 666.0,
-  mx = width / 2,
-  my = height / 2 - 1,
+  mx = width / 2 - 1,
+  my = height / 2 + 3,
   r = mx * 0.5,
   background = new Image();
 
@@ -47,7 +47,7 @@ const
   // Minute angle
   ma = 360 / 60,
   // Seconds y offset
-  syo = 178;
+  syo = 174;
 
 // The "/ 180 * Math.PI" at the end converts angle degree into radials
 smallHand = ((ha * t.getHours() + (ma * t.getMinutes() / 12) + (ma * t.getSeconds() / 60 / 12)) + 90) / 180 * Math.PI;
