@@ -1,9 +1,21 @@
 <!DOCTYPE html>
 <html>
+
+<head>
+<title>Dageraad</title>
+<style>
+body {
+  background: #d0d0d0;
+}
+</style>
+</head>
+
 <body>
 
-<canvas id="myCanvas" width="666" height="666" style="border:0px solid #666;">
+<div style="margin: auto; width: 50%">
+<canvas id="myCanvas" width="666" height="666" style="border: none;">
 Your browser does not support the HTML5 canvas tag.</canvas>
+</div>
 
 <script>
 
@@ -35,8 +47,11 @@ const
   // Hour angle
   ha = 360 / 12,
   // Minute angle
-  ma = 360 / 60;
+  ma = 360 / 60,
+  // Seconds y offset
+  syo = 178;
 
+// The "/ 180 * Math.PI" at the end converts angle degree into radials
 smallHand = ((ha * t.getHours() + (ma * t.getMinutes() / 12)) + 90) / 180 * Math.PI;
 bigHand = ((ma * t.getMinutes() + (ma * t.getSeconds() / 60)) + 90) / 180 * Math.PI;
 secondsHand = (ma * t.getSeconds() + 90) / 180 * Math.PI;
@@ -46,7 +61,7 @@ ctx.drawImage(background, 0, 0);
 
 // Draw seconds circle
 ctx.beginPath();
-ctx.arc(mx, my + 178, 15, 0, 2 * Math.PI, false);
+ctx.arc(mx, my + syo, 15, 0, 2 * Math.PI, false);
 ctx.fillStyle = 'black';
 ctx.fill();
 ctx.lineWidth = 5;
@@ -57,10 +72,20 @@ ctx.stroke();
 ctx.beginPath();
 ctx.lineWidth = 3;
 ctx.strokeStyle = 'black';
-ctx.moveTo(mx, my + 178);
+ctx.moveTo(mx, my + syo);
 xx = mx - 90 * Math.cos(secondsHand);
 yy = my - 90 * Math.sin(secondsHand);
-ctx.lineTo(xx, yy + 178);
+ctx.lineTo(xx, yy + syo);
+ctx.stroke();
+
+//Draw seconds hand back
+ctx.beginPath();
+ctx.lineWidth = 3;
+ctx.strokeStyle = 'black';
+ctx.moveTo(mx, my + syo);
+xx = mx + 30 * Math.cos(secondsHand);
+yy = my + 30 * Math.sin(secondsHand);
+ctx.lineTo(xx, yy + syo);
 ctx.stroke();
 
 // Draw small hand
