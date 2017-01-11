@@ -25,9 +25,7 @@ const
   width = 666.0, height = 666.0,
   mx = width / 2,
   my = height / 2 - 1,
-  r = mx * 0.5;
-
-const
+  r = mx * 0.5,
   background = new Image();
 
 background.src = "klokje666.png";
@@ -52,7 +50,7 @@ const
   syo = 178;
 
 // The "/ 180 * Math.PI" at the end converts angle degree into radials
-smallHand = ((ha * t.getHours() + (ma * t.getMinutes() / 12)) + 90) / 180 * Math.PI;
+smallHand = ((ha * t.getHours() + (ma * t.getMinutes() / 12) + (ma * t.getSeconds() / 60 / 12)) + 90) / 180 * Math.PI;
 bigHand = ((ma * t.getMinutes() + (ma * t.getSeconds() / 60)) + 90) / 180 * Math.PI;
 secondsHand = (ma * t.getSeconds() + 90) / 180 * Math.PI;
 
@@ -73,8 +71,8 @@ ctx.beginPath();
 ctx.lineWidth = 3;
 ctx.strokeStyle = 'black';
 ctx.moveTo(mx, my + syo);
-xx = mx - 90 * Math.cos(secondsHand);
-yy = my - 90 * Math.sin(secondsHand);
+xx = mx - 89 * Math.cos(secondsHand);
+yy = my - 89 * Math.sin(secondsHand);
 ctx.lineTo(xx, yy + syo);
 ctx.stroke();
 
