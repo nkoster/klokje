@@ -54,7 +54,7 @@ const
   // Minute angle
   ma = 360 / 60,
   // Seconds y offset
-  syo = 174;
+  syo = 173;
 
 // The "/ 180 * Math.PI" at the end converts angle degrees to radians
 smallHand = ((ha * t.getHours() + (ma * t.getMinutes() / 12) + (ma * t.getSeconds() / 60 / 12)) + 90) / 180 * Math.PI;
@@ -67,7 +67,7 @@ ctx.drawImage(background, 0, 0);
 // Draw seconds circle
 ctx.beginPath();
 ctx.arc(mx, my + syo, 15, 0, 2 * Math.PI, false);
-ctx.fillStyle = 'black';
+ctx.fillStyle = '#24211a';
 ctx.fill();
 ctx.lineWidth = 5;
 ctx.strokeStyle = '#bbbbbb';
@@ -76,7 +76,7 @@ ctx.stroke();
 // Draw seconds hand
 ctx.beginPath();
 ctx.lineWidth = 3;
-ctx.strokeStyle = 'black';
+ctx.strokeStyle = '#24211a';
 ctx.moveTo(mx, my + syo);
 xx = mx - 89 * Math.cos(secondsHand);
 yy = my - 89 * Math.sin(secondsHand);
@@ -86,7 +86,7 @@ ctx.stroke();
 //Draw seconds hand back
 ctx.beginPath();
 ctx.lineWidth = 3;
-ctx.strokeStyle = 'black';
+ctx.strokeStyle = '#24211a';
 ctx.moveTo(mx, my + syo);
 xx = mx + 30 * Math.cos(secondsHand);
 yy = my + 30 * Math.sin(secondsHand);
@@ -96,7 +96,7 @@ ctx.stroke();
 // Draw small hand
 ctx.beginPath();
 ctx.lineWidth = 10;
-ctx.strokeStyle = 'black';
+ctx.strokeStyle = '#24211a';
 ctx.moveTo(mx, my);
 xx = mx - r / 1.2 * Math.cos(smallHand);
 yy = my - r / 1.2 * Math.sin(smallHand);
@@ -106,7 +106,7 @@ ctx.stroke();
 // Draw middle circle
 ctx.beginPath();
 ctx.arc(mx, my, 15, 0, 2 * Math.PI, false);
-ctx.fillStyle = 'black';
+ctx.fillStyle = '#24211a';
 ctx.fill();
 ctx.lineWidth = 5;
 ctx.strokeStyle = '#bbbbbb';
@@ -115,7 +115,7 @@ ctx.stroke();
 // Draw big hand
 ctx.beginPath();
 ctx.lineWidth = 10;
-ctx.strokeStyle = 'black';
+ctx.strokeStyle = '#24211a';
 ctx.moveTo(mx, my);
 xx = mx - r * 1.03 * Math.cos(bigHand);
 yy = my - r * 1.03 * Math.sin(bigHand);
