@@ -38,13 +38,15 @@ const
 background.src = "klokje666.png";
 
 background.onload = function() {
-  ctx.drawImage(background, 0, 0);   
+  //ctx.scale(0.7, 0.7);
+  ctx.drawImage(background, 0, 0);
+  //ctx.filter = "blur(1px)";
 }
 
 const
   draw = function() {
 
-var
+let
   xx, yy, smallHand, bigHand, secondsHand;
 
 const
